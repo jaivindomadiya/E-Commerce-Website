@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block product %}
+<div class="signup-form">
+    <form action="/signup" method="post">{% csrf_token %}
+		<h2>Register</h2>
+        <p class="hint-text">Create your account. It's free and only takes a minute.</p>
+        {% if error %}
+        <div class="alert alert-danger" role="alert">
+            {{error}}
+        </div>
+        {% endif %}
+        <div class="form-group">
+			<div class="row">
+				<div class="col"><input type="text" class="form-control" name="first_name" value="{{values.first_name}}" placeholder="First Name" required="required"></div>
+				<div class="col"><input type="text" class="form-control" name="last_name" value="{{values.last_name}}" placeholder="Last Name" required="required"></div>
+			</div>        	
+        </div>
+        <div class="form-group">
+        	<input type="email" class="form-control" name="email" value="{{values.email}}" placeholder="Email" required="required">
+        </div>
+		<div class="form-group">
+            <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+        </div>      
+		<div class="form-group">
+            <button type="submit" class="btn btn-success btn-lg btn-block">Register Now</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
